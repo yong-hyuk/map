@@ -1,18 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>카카오 API (지도)</title>
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- sylesheet -->
-    <script src="kakaoMpa.js"></script>
+  <meta charset="utf-8">
+  <title>CSV 기반 나만의 카카오 지도</title>
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=90c65171de775fec6bd22bcdcfc230b9&libraries=clusterer"></script>
 </head>
 <body>
-    <div id="map" style="width:600px; height:600px;">
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90c65171de775fec6bd22bcdcfc230b9"></script>
-    </div>
+  <h2>CSV에서 불러온 마커 지도</h2>
+  <div id="map" style="width:100%;height:600px;"></div>
+
+  <script>
+    const mapContainer = document.getElementById('map');
+    const mapOption = {
+      center: new kakao.maps.LatLng(37.5665, 126.9780),
+      level: 8
+    };
+    const map = new kakao.maps.Map(mapContainer, mapOption);
+    const clusterer = new kakao.maps.MarkerClusterer({
+      map: map,
+      averageCenter: true,
+      minLevel: 7
+    });
+    const bounds = new kakao.maps.LatLngBounds();
+    const markers = [];
+
+    var markerPosition = new kakao.maps.LatLng(37.60523021, 127.1030446);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선1"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선1</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.64405985, 127.1316449);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선3"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선3</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.64741886, 127.1827369);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선4"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선4</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.63675142, 127.2037563);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선5"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선5</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.6388587, 127.2136841);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선6"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선6</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.6595571, 127.2847104);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선7"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선7</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.6574374, 127.3303823);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선8"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선8</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.659461, 127.334501);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선9"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선9</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.7664722, 127.4507004);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선10"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선10</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    var markerPosition = new kakao.maps.LatLng(37.7683545, 127.4524344);
+    var marker = new kakao.maps.Marker({
+      position: markerPosition,
+      title: "경춘선11"
+    });
+    var infowindow = new kakao.maps.InfoWindow({
+      content: '<div style="padding:5px;font-size:13px;">경춘선11</div>'
+    });
+    kakao.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+    kakao.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+    markers.push(marker);
+    bounds.extend(markerPosition);
+
+    clusterer.addMarkers(markers);
+    map.setBounds(bounds);
+  </script>
 </body>
 </html>
