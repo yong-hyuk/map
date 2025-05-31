@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>CSV 기반 나만의 카카오 지도</title>
-   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=90c65171de775fec6bd22bcdcfc230b9키&autoload=false&libraries=clusterer"></script>
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=90c65171de775fec6bd22bcdcfc230b9&autoload=false&libraries=clusterer"></script>
 </head>
 <body>
   <h2>CSV에서 불러온 마커 지도</h2>
@@ -25,7 +25,6 @@
       const bounds = new kakao.maps.LatLngBounds();
       const markers = [];
 
-      // 마커 정보 배열로 정리
       const markerData = [
         { lat: 37.60523021, lng: 127.1030446, title: "경춘선1" },
         { lat: 37.64405985, lng: 127.1316449, title: "경춘선3" },
@@ -39,7 +38,6 @@
         { lat: 37.7683545,  lng: 127.4524344, title: "경춘선11" }
       ];
 
-      // 마커 생성 반복
       markerData.forEach(data => {
         const markerPosition = new kakao.maps.LatLng(data.lat, data.lng);
         const marker = new kakao.maps.Marker({
