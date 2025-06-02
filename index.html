@@ -2,16 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CSV 기반 나만의 카카오 지도</title>
-  <!-- autoload=false 추가 -->
+  <title>제작:최용혁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=70cb71b7d651b74648a422882b94c7c3&autoload=false&libraries=clusterer"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <h2>CSV에서 불러온 마커 지도</h2>
-  <div id="map" style="width:100%;height:100%;"></div>
+  <div id="map"></div>
 
   <script>
-    // 카카오 API가 완전히 로드된 후 실행하도록 하기
     kakao.maps.load(function () {
       const mapContainer = document.getElementById('map');
       const mapOption = {
@@ -19,11 +29,16 @@
         level: 8
       };
       const map = new kakao.maps.Map(mapContainer, mapOption);
+
+      // 👉 위성 지도 설정
+      map.setMapTypeId(kakao.maps.MapTypeId.SKYVIEW);
+
       const clusterer = new kakao.maps.MarkerClusterer({
         map: map,
         averageCenter: true,
         minLevel: 7
       });
+
       const bounds = new kakao.maps.LatLngBounds();
       const markers = [];
 
@@ -37,34 +52,4 @@
         { lat: 37.6574374,  lng: 127.3303823, title: "경춘선8" },
         { lat: 37.659461,   lng: 127.334501,  title: "경춘선9" },
         { lat: 37.7664722,  lng: 127.4507004, title: "경춘선10" },
-        { lat: 37.7683545,  lng: 127.4524344, title: "경춘선11" }
-      ];
-
-      markerData.forEach(data => {
-        const markerPosition = new kakao.maps.LatLng(data.lat, data.lng);
-        const marker = new kakao.maps.Marker({
-          position: markerPosition,
-          title: data.title
-        });
-
-        const infowindow = new kakao.maps.InfoWindow({
-          content: `<div style="padding:5px;font-size:13px;">${data.title}</div>`
-        });
-
-        kakao.maps.event.addListener(marker, 'mouseover', function () {
-          infowindow.open(map, marker);
-        });
-        kakao.maps.event.addListener(marker, 'mouseout', function () {
-          infowindow.close();
-        });
-
-        markers.push(marker);
-        bounds.extend(markerPosition);
-      });
-
-      clusterer.addMarkers(markers);
-      map.setBounds(bounds);
-    });
-  </script>
-</body>
-</html>
+        { lat: 37.7683545,  lng: 127.4524344, tit
